@@ -1,0 +1,8 @@
+Unidecode==0.04.17
+gnureadline==6.3.3
+ipdb==0.8
+ipython==2.3.1
+praw==2.1.19
+requests==2.5.1
+six==1.9.0
+update-checker==0.11
