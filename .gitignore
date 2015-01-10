@@ -97,3 +97,6 @@ TAGS
 
 # credentials
 unit-conversion-bot/creds.py
+
+# misc.
+last_submission
