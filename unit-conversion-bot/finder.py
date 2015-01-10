@@ -5,7 +5,7 @@ class Finder(object):
     def __init__(self, text):
         self.text = text
 
-        self.unit_table = {'kmh': self.convert_kmh,
+        self.conversion_table = {'kmh': self.convert_kmh,
                            'km/h': self.convert_kmh,
                            'm/s': self.convert_mps,
                            'mph': self.convert_mph,
@@ -26,11 +26,13 @@ class Finder(object):
 
     def convert_units(self):
         units = self.find_units()
-        Unit = namedtuple('Unit', 'value ws units')
-        for unit in units:
-            u = Unit._make(unit[:3])
-            func = self.unit_table[u.units]
-            return func(u.value)
+        if units:
+            Unit = namedtuple('Unit', 'value ws units')
+            for unit in units:
+                u = Unit._make(unit[:3])
+                # get conversion function according to type of units
+                func = self.conversion_table[u.units]
+                return func(u.value)
 
     def convert_kmh(self, unit_value):
         kmh = float(unit_value)
