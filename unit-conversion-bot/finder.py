@@ -1,15 +1,18 @@
 from collections import namedtuple
 import re
 
+
 class Finder(object):
     def __init__(self, text):
         self.text = text
 
-        self.conversion_table = {'kmh': self.convert_kmh,
-                           'km/h': self.convert_kmh,
-                           'm/s': self.convert_mps,
-                           'mph': self.convert_mph,
-                           'mi/h': self.convert_mph}
+        self.conversion_table = {
+            'kmh': self.convert_kmh,
+            'km/h': self.convert_kmh,
+            'm/s': self.convert_mps,
+            'mph': self.convert_mph,
+            'mi/h': self.convert_mph
+        }
 
     def build_regex(self):
         NUMBER = "(\d+\.?\d*|\.\d+)"
@@ -18,7 +21,9 @@ class Finder(object):
         SPEED_MTR = "(m/s)"
         SPEED_MILE = "(mph|mi/h)"
 
-        REGEXP = "%s(\s)*(%s|%s|%s)" % (NUMBER, SPEED_KM, SPEED_MTR, SPEED_MILE)
+        REGEXP = "%s(\s)*(%s|%s|%s)" % (
+            NUMBER, SPEED_KM, SPEED_MTR, SPEED_MILE
+        )
         return REGEXP
 
     def find_units(self):
