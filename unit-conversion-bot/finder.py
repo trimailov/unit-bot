@@ -33,11 +33,22 @@ class Finder(object):
         units = self.find_units()
         if units:
             Unit = namedtuple('Unit', 'value ws units')
+            convertion_answer = []
+            unit_values_found = []
+
             for unit in units:
                 u = Unit._make(unit[:3])
                 # get conversion function according to type of units
                 func = self.conversion_table[u.units]
-                return func(u.value)
+                convertion_answer.append(func(u.value))
+                unit_values_found.append('{} {}'.format(u.value, u.units))
+
+            intro_text = "`{username}` have found such values: `{units}`.".format(
+                username=creds.USERNAME,
+                units='`, `'.join(unit_values_found),
+            )
+            convertion_answer.insert(0, intro_text)
+            return '\n\n---\n\n'.join(convertion_answer)
 
     def convert_kmh(self, unit_value):
         kmh = float(unit_value)
