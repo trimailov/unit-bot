@@ -44,7 +44,9 @@ class Finder(object):
         mps = kmh / 3.6
         mph = kmh / 1.6
 
-        answer = '%g km/h, converts to: %g m/s, %g mi/h.' % (kmh, mps, mph)
+        answer = '%g km/h, converts to:\n\n%g m/s,\n\n%g mph.' % (
+            kmh, mps, mph
+        )
         print(answer)
         return answer
 
@@ -53,7 +55,9 @@ class Finder(object):
         kmh = mps * 3.6
         mph = kmh / 1.6
 
-        answer = '%g m/s, converts to: %g km/h, %g mi/h.' % (mps, kmh, mph)
+        answer = '%g m/s, converts to:\n\n%g km/h,\n\n%g mph.' % (
+            mps, kmh, mph
+        )
         print(answer)
         return answer
 
@@ -62,7 +66,8 @@ class Finder(object):
         kmh = mph * 1.6
         mps = kmh / 3.6
 
-        answer = '%g mi/h, converts to: %g km/h, %g m/s.' % (mph, kmh, mps)
+        answer = '%g mph, converts to:\n\n%g km/h,\n\n%g m/s.' % (
+            mph, kmh, mps
+        )
         print(answer)
         return answer
-
