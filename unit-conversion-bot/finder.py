@@ -1,6 +1,8 @@
 from collections import namedtuple
 import re
 
+import creds
+
 
 class Finder(object):
     def __init__(self, text):
@@ -55,10 +57,9 @@ class Finder(object):
         mps = kmh / 3.6
         mph = kmh / 1.6
 
-        answer = '%g km/h, converts to:\n\n%g m/s,\n\n%g mph.' % (
+        answer = '    %g km/h, converts to:\n    %g m/s,\n    %g mph.' % (
             kmh, mps, mph
         )
-        print(answer)
         return answer
 
     def convert_mps(self, unit_value):
@@ -66,10 +67,9 @@ class Finder(object):
         kmh = mps * 3.6
         mph = kmh / 1.6
 
-        answer = '%g m/s, converts to:\n\n%g km/h,\n\n%g mph.' % (
+        answer = '    %g m/s, converts to:\n    %g km/h,\n    %g mph.' % (
             mps, kmh, mph
         )
-        print(answer)
         return answer
 
     def convert_mph(self, unit_value):
@@ -77,8 +77,7 @@ class Finder(object):
         kmh = mph * 1.6
         mps = kmh / 3.6
 
-        answer = '%g mph, converts to:\n\n%g km/h,\n\n%g m/s.' % (
+        answer = '    %g mph, converts to:\n    %g km/h,\n    %g m/s.' % (
             mph, kmh, mps
         )
-        print(answer)
         return answer
