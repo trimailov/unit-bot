@@ -8,7 +8,7 @@ import creds
 from finder import Finder
 
 r = praw.Reddit(user_agent=creds.USER_AGENT)
-r.login(creds.USERNAME, creds.PASSWORD)
+r.login(creds.USERNAME, creds.PASSWORD, disable_warning=True)
 del creds.PASSWORD
 
 def get_new_posts():
