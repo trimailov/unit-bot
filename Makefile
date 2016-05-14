@@ -1,20 +1,34 @@
 CTAGS=/usr/local/bin/ctags
 
-.PHONY: all
-all: env ctags
-	env/bin/pip install -r requirements.txt
+all: env pip ctags
 
 .PHONY: env
 env:
 	pyvenv env
 
+.PHONY: pip-tools
+pip-tools:
+	env/bin/pip install pip-tools
+
+.PHONY: pip
+pip: pip-tools
+	env/bin/pip-sync requirements.txt
+
+.PHONY: pip-compile
+pip-compile: pip-tools
+	env/bin/pip-compile requirements.in
+
 .PHONY: run
 run: rm_cache
-	env/bin/python unit-conversion-bot/unit-conversion-bot.py
+	env/bin/python unit_bot/bot.py
 
-.PHONY: doctest
-doctest: rm_cache
-	env/bin/python -m doctest -v unit-conversion-bot/unit-conversion-bot.py
+.PHONY: test
+test:
+	env/bin/py.test
+
+.PHONY: watch-test
+watch-test:
+	env/bin/ptw
 
 .PHONY: rm_cache
 rm_cache:
