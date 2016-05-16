@@ -34,7 +34,7 @@ watch-test:
 rm_cache:
 	rm -rf __pycache__
 
-.PHONY: ctags
+.PHONY: tags
 ctags:
 	$(CTAGS) -R --exclude=.git
 
@@ -45,4 +45,3 @@ requirements:
 .PHONY: clean
 clean:
 	rm -rf __pycache__ env tags
-
