@@ -11,7 +11,7 @@ del creds.PASSWORD
 
 
 def get_new_posts():
-    submissions = r.get_subreddit('all').get_new(limit=100)
+    submissions = r.get_subreddit('test_unitbot').get_new(limit=100)
 
     try:
         f = open('last_submission', 'r+')
@@ -34,6 +34,7 @@ def get_new_posts():
             finder = Finder(selftext)
             submission.add_comment(finder.convert_units())
             print("Commented on {}".format(submission.short_link))
+
 
 if __name__ == "__main__":
     while True:

@@ -1,7 +1,7 @@
 from collections import namedtuple
 import re
 
-import creds
+from unit_bot import creds
 
 
 class Finder(object):
@@ -33,51 +33,52 @@ class Finder(object):
 
     def convert_units(self):
         units = self.find_units()
+        conversion_dict = {}
         if units:
             Unit = namedtuple('Unit', 'value ws units')
-            convertion_answer = []
-            unit_values_found = []
 
             for unit in units:
                 u = Unit._make(unit[:3])
                 # get conversion function according to type of units
-                func = self.conversion_table[u.units]
-                convertion_answer.append(func(u.value))
-                unit_values_found.append('{} {}'.format(u.value, u.units))
+                conversion_func = self.conversion_table[u.units]
+                original_value = '{} {}'.format(u.value, u.units)
+                conversion_dict[original_value] = conversion_func(u.value)
 
-            intro_text = "`{username}` have found such values: `{units}`.".format(
-                username=creds.USERNAME,
-                units='`, `'.join(unit_values_found),
-            )
-            convertion_answer.insert(0, intro_text)
-            return '\n\n---\n\n'.join(convertion_answer)
+        return conversion_dict
 
     def convert_kmh(self, unit_value):
         kmh = float(unit_value)
         mps = kmh / 3.6
         mph = kmh / 1.6
-
-        answer = '    %g km/h, converts to:\n    %g m/s,\n    %g mph.' % (
-            kmh, mps, mph
-        )
-        return answer
+        return ['{:g} m/s'.format(mps), '{:g} mph'.format(mph)]
 
     def convert_mps(self, unit_value):
         mps = float(unit_value)
         kmh = mps * 3.6
         mph = kmh / 1.6
-
-        answer = '    %g m/s, converts to:\n    %g km/h,\n    %g mph.' % (
-            mps, kmh, mph
-        )
-        return answer
+        return ['{:g} km/h'.format(kmh), '{:g} mph'.format(mph)]
 
     def convert_mph(self, unit_value):
         mph = float(unit_value)
         kmh = mph * 1.6
         mps = kmh / 3.6
+        return ['{:g} km/h'.format(kmh), '{:g} m/s'.format(mps)]
 
-        answer = '    %g mph, converts to:\n    %g km/h,\n    %g m/s.' % (
-            mph, kmh, mps
+    def generate_conversion_message(self):
+        converted_units = self.convert_units()
+
+        intro_text = "/u/{username} have found such values: `{units}`.".format(
+            username=creds.USERNAME,
+            units='`, `'.join(sorted(converted_units.keys())),
         )
-        return answer
+        converted_values_lines = []
+        converted_values = sorted(converted_units.items())
+        for key, value in converted_values:
+            converted_values_lines.append(
+                '{} is: {} or {}\n'.format(key, value[0], value[1])
+            )
+        message = "{intro}\n\n{converted_values}".format(
+            intro=intro_text,
+            converted_values='\n\n'.join(converted_values_lines)
+        )
+        return message

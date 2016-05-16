@@ -6,7 +6,7 @@ Unit conversion bot for reddit.
 Usage
 =====
 
-Create ``creds.py`` file in ``unit-conversion-bot/`` directory.
+Create ``creds.py`` file in ``unit_bot/`` directory.
 
 Example of ``creds.py``:
 
