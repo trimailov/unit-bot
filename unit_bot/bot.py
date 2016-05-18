@@ -32,7 +32,7 @@ def get_new_posts():
         selftext = submission.selftext
         if selftext:
             finder = Finder(selftext)
-            submission.add_comment(finder.convert_units())
+            submission.add_comment(finder.generate_conversion_message())
             print("Commented on {}".format(submission.short_link))
 
 
