@@ -2,8 +2,8 @@ import time
 
 import praw
 
-import creds
-from finder import Finder
+from unit_bot import creds
+from unit_bot.finder import Finder
 
 r = praw.Reddit(user_agent=creds.USER_AGENT)
 r.login(creds.USERNAME, creds.PASSWORD, disable_warning=True)
@@ -34,9 +34,3 @@ def get_new_posts():
             finder = Finder(selftext)
             submission.add_comment(finder.generate_conversion_message())
             print("Commented on {}".format(submission.short_link))
-
-
-if __name__ == "__main__":
-    while True:
-        get_new_posts()
-        time.sleep(60)

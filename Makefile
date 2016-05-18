@@ -20,7 +20,7 @@ pip-compile: pip-tools
 
 .PHONY: run
 run: rm_cache
-	env/bin/python unit_bot/bot.py
+	env/bin/python main.py
 
 .PHONY: test
 test:
