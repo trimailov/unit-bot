@@ -26,6 +26,10 @@ run: rm_cache
 test:
 	env/bin/py.test
 
+.PHONY: coverage
+coverage:
+	env/bin/py.test --cov=unit_bot --cov-report=html
+
 .PHONY: watch-test
 watch-test:
 	env/bin/ptw
