@@ -1,4 +1,4 @@
 USERNAME = 'unit-conversion-bot'
 PASSWORD = 'foxjumpsoverlazydog'
 
-USER_AGENT = 'unit-conversion-bot/0.01'
+USER_AGENT = 'Unit converter, github.com/trimailov/unit-bot, by /u/trymas'
