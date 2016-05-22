@@ -42,7 +42,7 @@ class Finder(object):
             for unit in units:
                 u = Unit._make(unit[:3])
                 # get conversion function according to type of units
-                conversion_func = self.conversion_table[u.units]
+                conversion_func = self.conversion_table[u.units.lower()]
                 original_value = '{} {}'.format(u.value, u.units)
                 conversion_dict[original_value] = conversion_func(u.value)
 
