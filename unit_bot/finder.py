@@ -7,6 +7,7 @@ from unit_bot import creds
 class Finder(object):
     def __init__(self, text):
         self.text = text
+        self.units = self.find_units()
 
         self.conversion_table = {
             'kmh': self.convert_kmh,
@@ -32,7 +33,7 @@ class Finder(object):
         return re.findall(self.build_regex(), self.text)
 
     def convert_units(self):
-        units = self.find_units()
+        units = self.units
         conversion_dict = {}
         if units:
             Unit = namedtuple('Unit', 'value ws units')
