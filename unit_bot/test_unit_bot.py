@@ -26,12 +26,12 @@ def test_find_units(text, result):
 
 
 convertion_data = [
-    ('1.2 kmh',               {'1.2 kmh': ['0.333333 m/s', '0.75 mph']}),
-    ('1.2 kmh, 62mph',        {'1.2 kmh': ['0.333333 m/s', '0.75 mph'],
-                               '62 mph':  ['99.2 km/h', '27.5556 m/s']}),
-    ('62, 6.2m/s',            {'6.2 m/s': ['22.32 km/h', '13.95 mph']}),
-    ('.2    km/h',            {'.2 km/h': ['0.0555556 m/s', '0.125 mph']}),
-    ('bla bla bla \n .9mi/h', {'.9 mi/h': ['1.44 km/h', '0.4 m/s']}),
+    ('1.2 kmh',               {'1.2 kmh': ['0.333333 m/s', '0.745645 mph']}),
+    ('1.2 kmh, 62mph',        {'1.2 kmh': ['0.333333 m/s', '0.745645 mph'],
+                               '62 mph':  ['99.7793 km/h', '27.7165 m/s']}),
+    ('62, 6.2m/s',            {'6.2 m/s': ['22.32 km/h', '13.869 mph']}),
+    ('.2    km/h',            {'.2 km/h': ['0.0555556 m/s', '0.124274 mph']}),
+    ('bla bla bla \n .9mi/h', {'.9 mi/h': ['1.44841 km/h', '0.402336 m/s']}),
 ]
 
 
@@ -43,8 +43,8 @@ def test_convert_units(text, result):
 
 
 message_data = [
-    ('1.2 kmh', "/u/unit-conversion-bot have found such values: `1.2 kmh`.\n\n1.2 kmh is: 0.333333 m/s or 0.75 mph\n"),
-    ('1.2 kmh, 62mph', "/u/unit-conversion-bot have found such values: `1.2 kmh`, `62 mph`.\n\n1.2 kmh is: 0.333333 m/s or 0.75 mph\n\n\n62 mph is: 99.2 km/h or 27.5556 m/s\n"),
+    ('1.2 kmh', "/u/unit-conversion-bot have found such values: `1.2 kmh`.\n\n1.2 kmh is: 0.333333 m/s or 0.745645 mph\n"),
+    ('1.2 kmh, 62mph', "/u/unit-conversion-bot have found such values: `1.2 kmh`, `62 mph`.\n\n1.2 kmh is: 0.333333 m/s or 0.745645 mph\n\n\n62 mph is: 99.7793 km/h or 27.7165 m/s\n"),
 ]
 
 

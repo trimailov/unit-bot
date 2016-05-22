@@ -51,18 +51,18 @@ class Finder(object):
     def convert_kmh(self, unit_value):
         kmh = float(unit_value)
         mps = kmh / 3.6
-        mph = kmh / 1.6
+        mph = kmh / 1.609344
         return ['{:g} m/s'.format(mps), '{:g} mph'.format(mph)]
 
     def convert_mps(self, unit_value):
         mps = float(unit_value)
         kmh = mps * 3.6
-        mph = kmh / 1.6
+        mph = kmh / 1.609344
         return ['{:g} km/h'.format(kmh), '{:g} mph'.format(mph)]
 
     def convert_mph(self, unit_value):
         mph = float(unit_value)
-        kmh = mph * 1.6
+        kmh = mph * 1.609344
         mps = kmh / 3.6
         return ['{:g} km/h'.format(kmh), '{:g} m/s'.format(mps)]
 
