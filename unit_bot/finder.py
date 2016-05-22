@@ -31,7 +31,7 @@ class Finder(object):
         return REGEXP
 
     def find_units(self):
-        return re.findall(self.build_regex(), self.text)
+        return re.findall(self.build_regex(), self.text, re.IGNORECASE)
 
     def convert_units(self):
         units = self.units
