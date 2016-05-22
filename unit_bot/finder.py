@@ -12,6 +12,7 @@ class Finder(object):
         self.conversion_table = {
             'kmh': self.convert_kmh,
             'km/h': self.convert_kmh,
+            'kph': self.convert_kmh,
             'm/s': self.convert_mps,
             'mph': self.convert_mph,
             'mi/h': self.convert_mph
@@ -20,7 +21,7 @@ class Finder(object):
     def build_regex(self):
         NUMBER = "(\d+\.?\d*|\.\d+)"
 
-        SPEED_KM = "(kmh|km/h)"
+        SPEED_KM = "(kmh|km/h|kph)"
         SPEED_MTR = "(m/s)"
         SPEED_MILE = "(mph|mi/h)"
 
