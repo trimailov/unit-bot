@@ -22,6 +22,14 @@ pip-compile: pip-tools
 run: rm_cache
 	env/bin/python main.py
 
+.PHONY: run_no_reply
+run_no_reply: rm_cache
+	env/bin/python main.py --no-reply
+
+.PHONY: run_debug
+run_debug: rm_cache
+	env/bin/python main.py --debug
+
 .PHONY: test
 test:
 	env/bin/py.test
