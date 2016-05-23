@@ -22,4 +22,4 @@ Run it:
 .. code-block:: bash
 
     make
-    make run
+    make run # or `run_no_reply`
