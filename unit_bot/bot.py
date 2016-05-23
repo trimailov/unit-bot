@@ -18,6 +18,10 @@ def scan_and_respond(reply=False, sub='test_unitbot'):
         for comment in praw.helpers.comment_stream(r, sub):
             finder = Finder(comment.body)
 
+            # do not reply to yourself
+            if comment.author.name == creds.USERNAME:
+                continue
+
             # if we found units to convert and comment is later than the
             # last one we replied to, then try to reply
             if finder.units and comment.id > last_comment and reply:
