@@ -19,7 +19,9 @@ class Finder(object):
         }
 
     def build_regex(self):
-        NUMBER = "(\d+\.?\d*|\.\d+)"
+        # TODO: recognize numbers with thousands separators
+        # e.g. 1 000 000 m/s, 3,141,592 km/g, etc.
+        NUMBER = "((?!0+)\d+\.?\d*|\.\d+)"
 
         SPEED_KM = "(kmh|km/h|kph)"
         SPEED_MTR = "(m/s)"

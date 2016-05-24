@@ -4,6 +4,8 @@ from unit_bot.finder import Finder
 
 
 text_data = [
+    ('0 kmh',                 []),
+    ('0000 kmh',              []),
     ('1.2 kmh',               [('1.2', ' ', 'kmh', 'kmh', '', '')]),
     ('1.2 kph',               [('1.2', ' ', 'kph', 'kph', '', '')]),
     ('1.2 kmh, 62mph',        [('1.2', ' ', 'kmh', 'kmh', '', ''),
